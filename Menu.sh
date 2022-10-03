@@ -20,8 +20,8 @@ while :
 	echo -OpenJDK/OpenJRE8
 	echo -Python3
 	echo -MySQL
-	echo Analizando sistema && uname --a && sleep 5
-	echo Analisis completo && echo Fecha inicio: &&  date && sleep 5
+	echo Analizando sistema && uname --a && sleep 3
+	echo Analisis completo && echo Fecha inicio: &&  date && sleep 3
 	echo Actualizacion iniciada
 	sudo apt-get update -y
 	sudo apt-get upgrade -y
@@ -52,11 +52,11 @@ while :
 	fi
 
 	echo Instalacion finalizada, por favor espere && sleep 5
-	echo Inicializando configuracion SQL && sleep 5
+	echo Inicializando configuracion SQL && sleep 3
         echo "Presione Enter para regresar al menu" ; read;;
       2) 
         echo *Por favor espere. Instalando
-	echo Analizando sistema && uname --a && sleep 5
+	echo Analizando sistema && uname --a && sleep 3
 	echo Analisis completo && echo Fecha inicio: &&  date && sleep 5
 	echo Actualizacion iniciada
 	sudo apt-get update -y
@@ -104,7 +104,7 @@ while :
 	echo "Nombre" Aqui deberas asignarle un nombre a la recicladora en cuestion
 	echo En caso de requerir un espacio usa un guion bajo _ [SOLO APLICA EN LOS CAMPOS UBICACION Y NOMBRE]
  	echo EN CASO DE COMETER UN ERROR PULSE CONTROL+C PARA CANCELAR
-	sleep 5s
+	sleep 3s
 	read -p "Contrasena: " var_1
 	read -p "Ubicacion: " var_2
 	read -p "Nombre_Reciclador: " var_3
