@@ -8,9 +8,10 @@ while :
     echo "  1. Instalar todo"
     echo "  2. Actualizacion de Sistema"
     echo "  3. Instalacion MySQL y JDK"
-    echo "  4. Configuracion Recicladora"
-    echo "  5. Reiniciar"
-    echo "  6. Salir"
+    echo "  4. Instalacion Base de datos"
+    echo "  5. Configuracion Recicladora"
+    echo "  6. Reiniciar"
+    echo "  7. Salir"
     read option
 
     case $option in
@@ -95,7 +96,19 @@ while :
 
 	echo Instalacion finalizada, por favor espere && sleep 5
         echo "Presione Enter para regresar al menu" ; read;;
-      4)
+	  4)
+		#COMANDOS SQL
+        sudo mysql -u root -e "CREATE USER 'TEST11'@'localhost' IDENTIFIED BY '1234';"
+        sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO 'TEST11'@'localhost'"
+        sudo mysql -u root -e "FLUSH PRIVILEGES;"
+        sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
+        sudo mysql -u root reciclador_local <bd_Reciclador.sql
+        sudo mysql -u root -e "SHOW DATABASES;"
+        sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
+        echo "VERIFIQUE DATOS POR SEGURIDAD" && sleep 3
+
+		echo "Presione Enter para regresar al menu" ; read;;
+      5)
 	echo CONFIGURACION AGREGAR RECICLADORA
         echo LEA CON CUIDADO LAS INSTRUCCIONES DE NO HACERLO PUEDE GENERAR UNA CONFIGURACION INCORRECTA
 	echo A CONTINUACION  SE LE SOLICITARAN CIERTOS DATOS PARA PODER CONFIGURAR SU RECICLADOR
@@ -111,10 +124,10 @@ while :
 	java -jar AgenteAgregar.jar agregar $var_1 $var_2 $var_3
 	history -c     
         echo "Presione Enter para continuar" ; read;;
-      5)
+      6)
 
 	sudo reboot ; read;;
-      6) echo "Programa Finalizado" ; exit 0 ;;
+      7) echo "Programa Finalizado" ; exit 0 ;;
       *) echo "Ingrese una opcion valida por favor." ;
       echo "Press enter for next iteration!" ; read;;
     esac
