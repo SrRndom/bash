@@ -58,7 +58,7 @@ while :
 	echo Instalacion finalizada, por favor espere && sleep 5
 	#CONFIGURACION SQL
 	echo Inicializando configuracion SQL && sleep 3
-	sudo mysql -u root -e "CREATE USER 'TEST11'@'localhost' IDENTIFIED BY '1234';"
+	sudo mysql -u root -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Intgen22@';"
 	sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO 'TEST11'@'localhost'"
 	sudo mysql -u root -e "FLUSH PRIVILEGES;"
 	sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
