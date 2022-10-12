@@ -58,8 +58,9 @@ while :
 	echo Instalacion finalizada, por favor espere && sleep 5
 	#CONFIGURACION SQL
 	echo Inicializando configuracion SQL && sleep 3
+	rm -r config.properties 2> /dev/null
 	ID1=Reciclador$RANDOM
-	ID2=$(openssl rand -base64 12)
+	ID2=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$%^&*_+|:?=' | fold -w 16 | grep -i '[!@#$%^&*_+|:?=]' | head -n 1)
 	   sudo mysql -u root -e "CREATE USER '$ID1'@'localhost' IDENTIFIED BY '$ID2';"
 	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost'"
 	   sudo mysql -u root -e "FLUSH PRIVILEGES;"
@@ -67,12 +68,15 @@ while :
 	   sudo mysql -u root reciclador_local <bd_Reciclador.sql
 	   sudo mysql -u root -e "SHOW DATABASES;"
 	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
-
-        read -p "Ingrese URL: " URL
-        echo jdbc.url = $URL >> config.properties
-        echo jdbc.driver = com.mysql.cj.jdbc.Driver >> config.properties
-        echo jdbc.username = $ID1 >> config.properties
-        echo jdbc.password = $ID2 >> config.properties
+			echo User: $ID1
+			echo Pass: $ID2
+			read -p "Ingrese URL: " URL
+			echo jdbc.url = $URL >> config.properties
+			echo jdbc.driver = com.mysql.cj.jdbc.Driver >> config.properties
+			echo jdbc.username = $ID1 >> config.properties
+			echo jdbc.password = $ID2 >> config.properties
+			rm -r /etc/config.properties 2> /dev/null
+			sudo mv config.properties /etc
 
      echo "VERIFIQUE DATOS POR SEGURIDAD" && sleep 3
 	#CONFIGURACION RECICLADORA
@@ -136,14 +140,25 @@ while :
         echo "Presione Enter para regresar al menu" ; read;;
 	  4)
 	#COMANDOS SQL
-	sudo mysql -u root -e "CREATE USER 'TEST999'@'localhost' IDENTIFIED BY '1234';"
-	sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO 'TEST11'@'localhost'"
-	sudo mysql -u root -e "FLUSH PRIVILEGES;"
-	sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
-	sudo mysql -u root reciclador_local <bd_Reciclador.sql
-	sudo mysql -u root -e "SHOW DATABASES;"
-	sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
-	echo "VERIFIQUE DATOS POR SEGURIDAD" && sleep 3
+	rm -r config.properties 2> /dev/null
+	ID1=Reciclador$RANDOM
+	ID2=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$%^&*_+|:?=' | fold -w 16 | grep -i '[!@#$%^&*_+|:?=]' | head -n 1)
+	   sudo mysql -u root -e "CREATE USER '$ID1'@'localhost' IDENTIFIED BY '$ID2';"
+	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost'"
+	   sudo mysql -u root -e "FLUSH PRIVILEGES;"
+	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
+	   sudo mysql -u root reciclador_local <bd_Reciclador.sql
+	   sudo mysql -u root -e "SHOW DATABASES;"
+	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
+			echo User: $ID1
+			echo Pass: $ID2
+			read -p "Ingrese URL: " URL
+			echo jdbc.url = $URL >> config.properties
+			echo jdbc.driver = com.mysql.cj.jdbc.Driver >> config.properties
+			echo jdbc.username = $ID1 >> config.properties
+			echo jdbc.password = $ID2 >> config.properties
+			rm -r /etc/config.properties 2> /dev/null
+			sudo mv config.properties /etc
 	
 
 		echo "Presione Enter para regresar al menu" ; read;;
