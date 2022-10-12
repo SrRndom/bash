@@ -27,7 +27,7 @@ CREATE TABLE `configuraciones` (
   `nombre` varchar(50) NOT NULL,
   `valor` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id_configuracion`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `contenedor_model` (
   `id_contenedor` int NOT NULL,
   `porcentaje_llenado` int NOT NULL,
   PRIMARY KEY (`id_contenedor_model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `error_model` (
   `id_reciclador` varchar(50) DEFAULT NULL,
   `tipo_error` int NOT NULL,
   PRIMARY KEY (`id_error_model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `saldo_model` (
   `id_saldo_model` int NOT NULL AUTO_INCREMENT,
   `tarjeta_uuid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_saldo_model`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `submovimiento_model` (
   PRIMARY KEY (`id_submovimiento_model`),
   KEY `id_saldo_model` (`id_saldo_model`),
   CONSTRAINT `submovimiento_model_ibfk_1` FOREIGN KEY (`id_saldo_model`) REFERENCES `saldo_model` (`id_saldo_model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-07 15:27:38
+-- Dump completed on 2022-10-12 15:33:30
