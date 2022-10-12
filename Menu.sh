@@ -58,14 +58,23 @@ while :
 	echo Instalacion finalizada, por favor espere && sleep 5
 	#CONFIGURACION SQL
 	echo Inicializando configuracion SQL && sleep 3
-	sudo mysql -u root -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Intgen22@';"
-	sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO 'TEST11'@'localhost'"
-	sudo mysql -u root -e "FLUSH PRIVILEGES;"
-	sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
-	sudo mysql -u root reciclador_local <bd_Reciclador.sql
-	sudo mysql -u root -e "SHOW DATABASES;"
-	sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
-	echo "VERIFIQUE DATOS POR SEGURIDAD" && sleep 3
+	ID1=Reciclador$RANDOM
+	ID2=$(openssl rand -base64 12)
+	   sudo mysql -u root -e "CREATE USER '$ID1'@'localhost' IDENTIFIED BY '$ID2';"
+	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost'"
+	   sudo mysql -u root -e "FLUSH PRIVILEGES;"
+	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
+	   sudo mysql -u root reciclador_local <bd_Reciclador.sql
+	   sudo mysql -u root -e "SHOW DATABASES;"
+	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
+
+        read -p "Ingrese URL: " URL
+        echo jdbc.url = $URL >> config.properties
+        echo jdbc.driver = com.mysql.cj.jdbc.Driver >> config.properties
+        echo jdbc.username = $ID1 >> config.properties
+        echo jdbc.password = $ID2 >> config.properties
+
+     echo "VERIFIQUE DATOS POR SEGURIDAD" && sleep 3
 	#CONFIGURACION RECICLADORA
 	echo CONFIGURACION AGREGAR RECICLADORA
     echo LEA CON CUIDADO LAS INSTRUCCIONES DE NO HACERLO PUEDE GENERAR UNA CONFIGURACION INCORRECTA
@@ -126,18 +135,25 @@ while :
 	echo Instalacion finalizada, por favor espere && sleep 5
         echo "Presione Enter para regresar al menu" ; read;;
 	  4)
-	#COMANDOS SQL
-	sudo mysql -u root -e "CREATE USER 'TEST999'@'localhost' IDENTIFIED BY '1234';"
-	sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO 'TEST11'@'localhost'"
-	sudo mysql -u root -e "FLUSH PRIVILEGES;"
-	sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
-	sudo mysql -u root reciclador_local <bd_Reciclador.sql
-	sudo mysql -u root -e "SHOW DATABASES;"
-	sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
-	echo "VERIFIQUE DATOS POR SEGURIDAD" && sleep 3
-	
+	#CONFIGURACION SQL
+	echo Inicializando configuracion SQL && sleep 3
+	ID1=Reciclador$RANDOM
+	ID2=$(openssl rand -base64 12)
+	   sudo mysql -u root -e "CREATE USER '$ID1'@'localhost' IDENTIFIED BY '$ID2';"
+	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost'"
+	   sudo mysql -u root -e "FLUSH PRIVILEGES;"
+	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
+	   sudo mysql -u root reciclador_local <bd_Reciclador.sql
+	   sudo mysql -u root -e "SHOW DATABASES;"
+	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
 
-		echo "Presione Enter para regresar al menu" ; read;;
+        read -p "Ingrese URL: " URL
+        echo jdbc.url = $URL >> config.properties
+        echo jdbc.driver = com.mysql.cj.jdbc.Driver >> config.properties
+        echo jdbc.username = $ID1 >> config.properties
+        echo jdbc.password = $ID2 >> config.properties
+
+     echo "VERIFIQUE DATOS POR SEGURIDAD" && sleep 3
       5)
 	echo CONFIGURACION AGREGAR RECICLADORA
         echo LEA CON CUIDADO LAS INSTRUCCIONES DE NO HACERLO PUEDE GENERAR UNA CONFIGURACION INCORRECTA
