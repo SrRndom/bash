@@ -63,9 +63,8 @@ while :
 	ID2=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$%^&*_+|:?=' | fold -w 16 | grep -i '[!@#$%^&*_+|:?=]' | head -n 1)
 	   sudo mysql -u root -e "CREATE USER '$ID1'@'localhost' IDENTIFIED BY '$ID2';"
 	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost';"
-	   sudo mysql -u root -e "FLUSH PRIVILEGES;"
 	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
-	   sudo mysql -u root reciclador_local <bd_Reciclador.sql
+	   sudo mysql -u root reciclador_local < reciclador_local.sql
 	   sudo mysql -u root -e "SHOW DATABASES;"
 	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
 #			echo User: $ID1
@@ -145,9 +144,8 @@ while :
 	ID2=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$%^&*_+|:?=' | fold -w 16 | grep -i '[!@#$%^&*_+|:?=]' | head -n 1)
 	   sudo mysql -u root -e "CREATE USER '$ID1'@'localhost' IDENTIFIED BY '$ID2';"
 	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost';"
-	   sudo mysql -u root -e "FLUSH PRIVILEGES;"
 	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
-	   sudo mysql -u root reciclador_local <bd_Reciclador.sql
+	   sudo mysql -u root reciclador_local < reciclador_local.sql
 	   sudo mysql -u root -e "SHOW DATABASES;"
 	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
 #			echo User: $ID1
