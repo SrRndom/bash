@@ -150,8 +150,8 @@ while :
 	   sudo mysql -u root reciclador_local <bd_Reciclador.sql
 	   sudo mysql -u root -e "SHOW DATABASES;"
 	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
-			echo User: $ID1
-			echo Pass: $ID2
+#			echo User: $ID1
+#			echo Pass: $ID2
 			read -p "Ingrese URL: " URL
 			echo jdbc.url = $URL >> config.properties
 			echo jdbc.driver = com.mysql.cj.jdbc.Driver >> config.properties
