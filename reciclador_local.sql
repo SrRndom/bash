@@ -27,7 +27,7 @@ CREATE TABLE `configuraciones` (
   `nombre` varchar(50) NOT NULL,
   `valor` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id_configuracion`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `configuraciones` (
 
 LOCK TABLES `configuraciones` WRITE;
 /*!40000 ALTER TABLE `configuraciones` DISABLE KEYS */;
-INSERT INTO `configuraciones` VALUES (1,'TOKEN','eyJhbGciOiJIUzI1NiJ9.eyJVc2VyIjoidU5IVUlyWTgiLCJOYW1lIjoiUmVjaWNsYWRvciAyMTAiLCJVVUlEIjoiRDA2NkI4RjgiLCJzdWIiOiIxMSIsImp0aSI6IjYzZjhjMDQyLTE1MjYtNGJmNy04NjQ2LTNlMGY1YWZlNDBjMiIsImlhdCI6MTY2MzEwMDU2MSwiZXhwIjoxNjYzMTAxNDYxfQ.j8OCYfpnYcXeMzx0rX3yAz-SVJT98zp2q5veH6ESvZM'),(2,'TOKEN_COMANDO','eyJhbGciOiJIUzI1NiJ9.eyJVc2VyIjoiNmJmU2ZicTAiLCJOYW1lIjoiUmVjaWNsYWRvciAyMzEiLCJVVUlEIjoiRUI5QjNFQTciLCJzdWIiOiIxNiIsImp0aSI6ImMzNjA1NWUxLWMyNmQtNDE1NS1iZTgxLWM3OGU0MWZmOGMxMSIsImlhdCI6MTY2NDQ3OTc0MiwiZXhwIjoxNjY0NDgwNjQyfQ.WEMQ4Xzk_7TJ-txotnMzgHz3qAqpD01c3a1lPWyU-BE'),(3,'IP','http://localhost:8080/Reciclador-API/'),(4,'EMAIL','T2NrAYXH'),(5,'PASSWORD','rRHYpf9Auw0MKPXX'),(6,'reciclador_UUID','43B1C1A5');
+INSERT INTO `configuraciones` VALUES (1,'TOKEN','eyJhbGciOiJIUzI1NiJ9.eyJVc2VyIjoidU5IVUlyWTgiLCJOYW1lIjoiUmVjaWNsYWRvciAyMTAiLCJVVUlEIjoiRDA2NkI4RjgiLCJzdWIiOiIxMSIsImp0aSI6IjYzZjhjMDQyLTE1MjYtNGJmNy04NjQ2LTNlMGY1YWZlNDBjMiIsImlhdCI6MTY2MzEwMDU2MSwiZXhwIjoxNjYzMTAxNDYxfQ.j8OCYfpnYcXeMzx0rX3yAz-SVJT98zp2q5veH6ESvZM'),(2,'TOKEN_COMANDO','eyJhbGciOiJIUzI1NiJ9.eyJVc2VyIjoiT3R1S0IxMHgiLCJOYW1lIjoiUmVjaWNsYWRvciAyMzMiLCJVVUlEIjoiMDMyNjdEMDkiLCJzdWIiOiI0IiwianRpIjoiZTEwMjQ5MzgtY2RjYy00MTExLWE0Y2ItMTI1NjZmNjRjN2VjIiwiaWF0IjoxNjY1NjE5NjA4LCJleHAiOjE2NjU2MjA1MDh9.23MfoKjK9uEJqgCHvH2uf63gQg3HcaS_62ewhIpSuXI'),(3,'IP','http://192.168.0.229/Reciclador-API/'),(4,'EMAIL','OtuKB10x'),(5,'PASSWORD','P0SvWhw1jxOiZTsm'),(6,'reciclador_UUID','03267D09');
 /*!40000 ALTER TABLE `configuraciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +53,7 @@ CREATE TABLE `contenedor_model` (
   `id_contenedor` int NOT NULL,
   `porcentaje_llenado` int NOT NULL,
   PRIMARY KEY (`id_contenedor_model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `error_model` (
   `id_reciclador` varchar(50) DEFAULT NULL,
   `tipo_error` int NOT NULL,
   PRIMARY KEY (`id_error_model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `saldo_model` (
   `id_saldo_model` int NOT NULL AUTO_INCREMENT,
   `tarjeta_uuid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_saldo_model`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,6 +109,7 @@ CREATE TABLE `saldo_model` (
 
 LOCK TABLES `saldo_model` WRITE;
 /*!40000 ALTER TABLE `saldo_model` DISABLE KEYS */;
+INSERT INTO `saldo_model` VALUES (7,'100417');
 /*!40000 ALTER TABLE `saldo_model` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +129,7 @@ CREATE TABLE `submovimiento_model` (
   PRIMARY KEY (`id_submovimiento_model`),
   KEY `id_saldo_model` (`id_saldo_model`),
   CONSTRAINT `submovimiento_model_ibfk_1` FOREIGN KEY (`id_saldo_model`) REFERENCES `saldo_model` (`id_saldo_model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,6 +138,7 @@ CREATE TABLE `submovimiento_model` (
 
 LOCK TABLES `submovimiento_model` WRITE;
 /*!40000 ALTER TABLE `submovimiento_model` DISABLE KEYS */;
+INSERT INTO `submovimiento_model` VALUES (1,7,'43B1C1A5',103,23);
 /*!40000 ALTER TABLE `submovimiento_model` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -149,4 +151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-12 15:33:30
+-- Dump completed on 2022-10-12 20:48:08
