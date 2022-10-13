@@ -27,8 +27,6 @@ while :
 	#ACTUALIZACION DE SISTEMA
 	sudo apt-get update -y
 	sudo apt-get upgrade -y
-	sudo apt full-upgrade
-	sudo apt clean
 	echo ACTUALIZACION DE SISTEMA FINALIZADA
 	#INSTALACION DE PAQUETES
 	echo INSTALACION DE PAQUETES INICIADA
@@ -65,8 +63,8 @@ while :
 	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost';"
 	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
 	   sudo mysql -u root reciclador_local < reciclador_local.sql
-	   sudo mysql -u root -e "SHOW DATABASES;"
-	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
+#	   sudo mysql -u root -e "SHOW DATABASES;"
+#	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
 #			echo User: $ID1
 #			echo Pass: $ID2
 			read -p "Ingrese URL: " URL
@@ -76,6 +74,10 @@ while :
 			echo jdbc.password = $ID2 >> config.properties
 			rm -r /etc/config.properties 2> /dev/null
 			sudo mv config.properties /etc
+		read -p "INGRESE URL DE CONEXION A LA WEB: " WEB
+
+		sudo mysql -u root -e "use reciclador_local; UPDATE configuraciones SET valor = '$WEB' WHERE id_configuracion = 3;"
+			
 
      echo "VERIFIQUE DATOS POR SEGURIDAD" && sleep 3
 	#CONFIGURACION RECICLADORA
@@ -146,8 +148,8 @@ while :
 	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost';"
 	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
 	   sudo mysql -u root reciclador_local < reciclador_local.sql
-	   sudo mysql -u root -e "SHOW DATABASES;"
-	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
+#	   sudo mysql -u root -e "SHOW DATABASES;"
+#	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
 #			echo User: $ID1
 #			echo Pass: $ID2
 			read -p "Ingrese URL: " URL
@@ -157,6 +159,9 @@ while :
 			echo jdbc.password = $ID2 >> config.properties
 			rm -r /etc/config.properties 2> /dev/null
 			sudo mv config.properties /etc
+		read -p "INGRESE URL DE CONEXION A LA WEB: " WEB
+
+		sudo mysql -u root -e "use reciclador_local; UPDATE configuraciones SET valor = '$WEB' WHERE id_configuracion = 3;"
 	
 
 		echo "Presione Enter para regresar al menu" ; read;;
