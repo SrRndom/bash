@@ -63,10 +63,6 @@ while :
 	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost';"
 	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
 	   sudo mysql -u root reciclador_local < reciclador_local.sql
-#	   sudo mysql -u root -e "SHOW DATABASES;"
-#	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
-#			echo User: $ID1
-#			echo Pass: $ID2
 			read -p "Ingrese URL: " URL
 			echo jdbc.url = $URL >> config.properties
 			echo jdbc.driver = com.mysql.cj.jdbc.Driver >> config.properties
@@ -148,10 +144,6 @@ while :
 	   sudo mysql -u root -e "GRANT ALL PRIVILEGES ON * . * TO '$ID1'@'localhost';"
 	   sudo mysql -u root -e "CREATE DATABASE reciclador_local;"
 	   sudo mysql -u root reciclador_local < reciclador_local.sql
-#	   sudo mysql -u root -e "SHOW DATABASES;"
-#	   sudo mysql -u root -e "SHOW TABLES FROM reciclador_local;"
-#			echo User: $ID1
-#			echo Pass: $ID2
 			read -p "Ingrese URL: " URL
 			echo jdbc.url = $URL >> config.properties
 			echo jdbc.driver = com.mysql.cj.jdbc.Driver >> config.properties
