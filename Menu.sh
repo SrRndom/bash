@@ -11,7 +11,7 @@ while :
     echo "  4. Instalacion Base de datos"
     echo "  5. Configuracion Recicladora"
     echo "  6. Reiniciar"
-    echo "  7. Salir"
+    echo "  7. Salir "
     read option
 
     case $option in
