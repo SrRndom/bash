@@ -10,6 +10,7 @@ while :
     echo "  3. Instalacion MySQL y JDK"
     echo "  4. Instalacion Base de datos"
     echo "  5. Configuracion Recicladora"
+	echo "  6. instalacion Reglas USB"
     echo "  6. Reiniciar"
     echo "  7. Salir "
     read option
@@ -92,6 +93,23 @@ while :
 	java -jar AgenteAgregar.jar agregar $var_1 $var_2 $var_3
 	history -c     
 	
+	  #INSTALACION REGLAS USB
+	echo INSTALACION DE CONFIGURACION ESP32 MEDIANTE REGLAS DEL SISTEMA
+	echo POR FAVOR ESPERE ESTO SOLO TOMARA UNOS SEGUNDOS && sleep 5s
+	rm -r 10-usb-serial.rules 2> /dev/null
+	echo "#CONFIGURACION PUERTOS USB" >> 10-usb-serial.rules
+	echo "#ESP32 MAESTRO" >> 10-usb-serial.rules
+	echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_MAESTRO", ATTRS{product}=="REC_MAESTRO", SYMLINK+="ttyUSB_MAESTRO" >> 10-usb-serial.rules
+	echo "#ESP32 SERVOS" >> 10-usb-serial.rules
+	echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_SERVOS", ATTRS{product}=="REC_SERVOS", SYMLINK+="ttyUSB_SERVOS" >> 10-usb-serial.rules
+	echo "#ESP32 LEDS"  >> 10-usb-serial.rules
+	echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_LEDS", ATTRS{product}=="REC_LEDS", SYMLINK+="ttyUSB_LEDS" >> 10-usb-serial.rules
+	echo "#ESP32 ULTRASONICOS" >> 10-usb-serial.rules
+	echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_ULTRASONICOS", ATTRS{product}=="REC_ULTRASONICOS", SYMLINK+="ttyUSB_ULTRAS" >> 10-usb-serial.rules
+	echo "#ESP32 ERRORES"  >> 10-usb-serial.rules
+	echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_ERRORES", ATTRS{product}=="REC_ERRORES", SYMLINK+="ttyUSB_ERRORES"  >> 10-usb-serial.rules
+	rm -r /etc/udev/rules.d/10-usb-serial.rules 2> /dev/null
+	sudo mv 10-usb-serial.rules /etc/udev/rules.d/
 		
         echo "Presione Enter para regresar al menu" ; read;;
       2) 
@@ -174,6 +192,26 @@ while :
 	history -c     
         echo "Presione Enter para continuar" ; read;;
       6)
+	  #INSTALACION REGLAS USB
+		echo INSTALACION DE CONFIGURACION ESP32 MEDIANTE REGLAS DEL SISTEMA
+		echo POR FAVOR ESPERE ESTO SOLO TOMARA UNOS SEGUNDOS && sleep 5s
+		rm -r 10-usb-serial.rules 2> /dev/null
+		echo "#CONFIGURACION PUERTOS USB" >> 10-usb-serial.rules
+		echo "#ESP32 MAESTRO" >> 10-usb-serial.rules
+		echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_MAESTRO", ATTRS{product}=="REC_MAESTRO", SYMLINK+="ttyUSB_MAESTRO" >> 10-usb-serial.rules
+		echo "#ESP32 SERVOS" >> 10-usb-serial.rules
+		echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_SERVOS", ATTRS{product}=="REC_SERVOS", SYMLINK+="ttyUSB_SERVOS" >> 10-usb-serial.rules
+		echo "#ESP32 LEDS"  >> 10-usb-serial.rules
+		echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_LEDS", ATTRS{product}=="REC_LEDS", SYMLINK+="ttyUSB_LEDS" >> 10-usb-serial.rules
+		echo "#ESP32 ULTRASONICOS" >> 10-usb-serial.rules
+		echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_ULTRASONICOS", ATTRS{product}=="REC_ULTRASONICOS", SYMLINK+="ttyUSB_ULTRAS" >> 10-usb-serial.rules
+		echo "#ESP32 ERRORES"  >> 10-usb-serial.rules
+		echo SUBSYSTEM=="tty", ATTRS{serial}=="ESP_ERRORES", ATTRS{product}=="REC_ERRORES", SYMLINK+="ttyUSB_ERRORES"  >> 10-usb-serial.rules
+		rm -r /etc/udev/rules.d/10-usb-serial.rules 2> /dev/null
+		sudo mv 10-usb-serial.rules /etc/udev/rules.d/
+		
+		echo "Presione Enter para continuar" ; read;;
+	  6)
 
 	sudo reboot ; read;;
       7) echo "Programa Finalizado" ; exit 0 ;;
