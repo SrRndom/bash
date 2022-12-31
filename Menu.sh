@@ -10,9 +10,9 @@ while :
     echo "  3. Instalacion MySQL y JDK"
     echo "  4. Instalacion Base de datos"
     echo "  5. Configuracion Recicladora"
-	echo "  6. instalacion Reglas USB"
-    echo "  6. Reiniciar"
-    echo "  7. Salir "
+    echo "  6. instalacion Reglas USB"
+    echo "  7. Reiniciar"
+    echo "  8. Salir "
     read option
 
     case $option in
@@ -211,10 +211,10 @@ while :
 		sudo mv 10-usb-serial.rules /etc/udev/rules.d/
 		
 		echo "Presione Enter para continuar" ; read;;
-	  6)
+	  7)
 
 	sudo reboot ; read;;
-      7) echo "Programa Finalizado" ; exit 0 ;;
+      8) echo "Programa Finalizado" ; exit 0 ;;
       *) echo "Ingrese una opcion valida por favor." ;
       echo "Press enter for next iteration!" ; read;;
     esac
